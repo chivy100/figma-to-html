@@ -1,14 +1,110 @@
 /* assets/CSS/style.css để tạo nhanh */
-*{
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
 
-html{
-    /* set 62.5% để quy đổi 1rem=10px. Vì mặc định 1rem=16px */
-    font-size: 62.5%;
+html {
+  /* set 62.5% để quy đổi 1rem=10px. Vì mặc định 1rem=16px */
+  font-size: 62.5%;
 }
 
 /* Khôi phục lại cỡ chữ mặc định theo rem */
-body{
-    font-size: 1.6rem;
+body {
+  font-size: 1.6rem;
+  font-family: "Poppins", sans-serif;
+}
+/* ==================== common ==================== */
+a {
+  /* Bỏ gạch chân thẻ <a> */
+  text-decoration: none;
+}
+
+.btn {
+  /* Chuyển mặc định (inline) sang inline-block để set padding */
+  display: inline-block;
+  min-width: 118px;
+  padding: 0 16px;
+  line-height: 50px;
+  color: #fff;
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 600;
+  border-radius: 24.5px;
+  background: #171100;
+}
+
+.main-content {
+  width: 1170px;
+  /* Cách lề 2 bên mỗi chỗ 24px */
+  max-width: calc(100% - 48px);
+  margin-left: auto;
+  margin-right: auto;
+}
+/* ==================== header ==================== */
+
+.header {
+  background: #fffcf4;
+}
+
+.header.fixed {
+  position: sticky;
+  /* Kéo xuống đến khoảng cách 36px-28px=8px là dừng lại. 36px đó là padding của .header .body */
+  top: -28px;
+}
+
+.header .body {
+  /* df */
+  display: flex;
+  align-items: center;
+  padding: 36px 0 8px;
+}
+
+.nav {
+  /* mla */
+  /* Canh trái nav nên nó đẩy luôn các thẻ sau nav sang hết bên phải */
+  margin-left: auto;
+}
+
+.nav ul {
+  display: flex;
+}
+
+.nav a {
+  /* Dùng để căn thẻ a::after theo thẻ a */
+  position: relative;
+  color: #5f5b53;
+  font-size: 1.6rem;
+  /* Vì tổng khoảng cách là 42px nên mỗi bên là 21px */
+  padding: 8px 21px;
+}
+.nav li.active a,
+.nav a:hover {
+  color: #171100;
+  /* Độ đậm của chữ: Nhưng dùng cái này đưa chuột vào nó làm chữ giãn ra, đưa chuột ra rồi co lại. Làm cả thanh nó giật giật không đẹp */
+  /* font-weight: 600; */
+  /* Chuyển qua dùng text-shadow: Tạo bóng đổ nhẹ sang bên phải 1px */
+  text-shadow: 1px 0 0 currentColor;
+}
+
+.nav li.active a::after {
+  /* Dùng để căn thẻ a::after theo thẻ a */
+  position: absolute;
+  left: 21px; /*bằng phần trái phải 21px của padding ở thẻ <a>*/
+  bottom: 6px;
+  /* để display inline ko set đc width height phải chuyển qua block hoặc inline-block */
+  display: block;
+  content: "";
+  width: 12px;
+  height: 2px;
+  border-radius: 1px;
+  background: #171100;
+}
+
+.header .btn-sign-up {
+  min-width: 144px;
+}
+
+.header .action {
+  /* Vì chỗ "Reviews" thuộc thẻ a đã cách 21px nên cần thêm 49px để nút Sign Up cách Reviews 70px */
+  margin-left: 49px;
 }
