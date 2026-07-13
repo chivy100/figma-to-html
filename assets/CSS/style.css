@@ -1,0 +1,14 @@
+/* assets/CSS/style.css để tạo nhanh */
+*{
+    box-sizing: border-box;
+}
+
+html{
+    /* set 62.5% để quy đổi 1rem=10px. Vì mặc định 1rem=16px */
+    font-size: 62.5%;
+}
+
+/* Khôi phục lại cỡ chữ mặc định theo rem */
+body{
+    font-size: 1.6rem;
+}
