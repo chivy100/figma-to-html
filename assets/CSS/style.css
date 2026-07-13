@@ -1,10 +1,18 @@
 /* assets/CSS/style.css để tạo nhanh */
+/* Làm các phần từ trên xuống dưới, từ trái qua phải, từ tổng quan đến chi tiết */
+
 * {
   box-sizing: border-box;
 }
 
+/* Tạo biến để tái sử dụng và chỉnh sửa nhanh */
+:root {
+  --font-heading: "Sen", sans-serif;
+  --primary-color: #ffb900;
+}
+
 html {
-  /* set 62.5% để quy đổi 1rem=10px. Vì mặc định 1rem=16px */
+  /* Set 62.5% để quy đổi 1rem=10px. Vì mặc định 1rem=16px */
   font-size: 62.5%;
 }
 
@@ -29,8 +37,12 @@ a {
   text-align: center;
   font-size: 1.6rem;
   font-weight: 600;
-  border-radius: 24.5px;
+  border-radius: 999px;
   background: #171100;
+}
+
+.btn:hover {
+  opacity: 0.9;
 }
 
 .main-content {
@@ -47,6 +59,8 @@ a {
 }
 
 .header.fixed {
+  /* Để thứ tự luôn ưu tiên nằm lên trên */
+  z-index: 1;
   position: sticky;
   /* Kéo xuống đến khoảng cách 36px-28px=8px là dừng lại. 36px đó là padding của .header .body */
   top: -28px;
@@ -107,4 +121,184 @@ a {
 .header .action {
   /* Vì chỗ "Reviews" thuộc thẻ a đã cách 21px nên cần thêm 49px để nút Sign Up cách Reviews 70px */
   margin-left: 49px;
+}
+
+/* ==============hero================ */
+
+.hero {
+  padding: 56px 0 65px;
+  background: #fffcf4;
+}
+
+.hero .body {
+  display: flex;
+}
+
+/* ==========hero left========== */
+/* Lấy class hero thay vì class main-content vì main-content là class chung các phần khác nữa. Nên không phân biệt được.  */
+.hero .media-block {
+  /* Dùng để căn chỉnh khối .media-summary theo khối cha .media-block */
+  position: relative;
+  /* Lấy chiều rộng khối .media-block=570px chia cho khối .main-content=1170px được gần 48% */
+  width: 48%;
+}
+
+/* Chỉnh form chuẩn khung ảnh. Để có upload ảnh khác lên thì vẫn giũ đúng form */
+.hero .media-block .img {
+  width: 470px;
+  height: 685px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.hero .hero-summary {
+  padding: 24px;
+  width: 270px;
+  /* Dùng để căn chỉnh khối .media-summary theo khối cha .media-block */
+  position: absolute;
+  bottom: 48px;
+  right: 0;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0px 16px 32px 0px rgba(0, 0, 0, 0.05);
+}
+
+.hero-summary .item {
+  display: flex;
+  /* Căn chỉnh các phần tử trong tất cả class "item" ở giữa theo cột dọc */
+  align-items: center;
+}
+
+/* Tác động vào các lớp item nằm sau item khác (ở đây là tác động vào item2 và item3 trừ item1 */
+.hero-summary .item + .item {
+  margin-top: 22px;
+}
+
+.hero-summary .icon {
+  /* 3 thuộc tính đầu để tạo hình tròn quanh img */
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  /* 4 thuộc tính sau để căn img chính giữa và tô màu nền cho hình tròn */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff9e8;
+}
+
+.hero-summary .icon2 {
+  background-color: #fcefff;
+}
+
+.hero-summary .icon3 {
+  background-color: #ebeaff;
+}
+
+.hero-summary .info {
+  /* Khoảng cách giữa info với label */
+  margin-left: 16px;
+}
+
+.hero-summary .label {
+  color: #5f5b53;
+  font-size: 1.4rem;
+  line-height: 1.86; /* 185.714% */
+}
+
+.hero-summary .title {
+  color: #171100;
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 1.67; /* 166.667% */
+}
+
+/* ==========hero right========== */
+.hero .content-block {
+  /* Lấy 100% - 48%(bên khối trái) = 52% */
+  width: 52%;
+  padding-left: 130px;
+  padding-top: 64px;
+}
+
+.hero .heading {
+  color: #171100;
+  font-family: var(--font-heading);
+  font-size: 5.8rem;
+  font-weight: 700;
+  line-height: 1.17; /* 117.241% */
+  letter-spacing: -1.16px;
+}
+
+.hero .desc {
+  margin-top: 22px;
+  color: #5f5b53;
+  font-size: 1.8rem;
+  line-height: 1.67; /* 166.667% */
+}
+
+.hero .cta-group {
+  /* Để xoay ngang 2 phần tử bên trong và căn giữa 2 phần tử theo chiều dọc */
+  display: flex;
+  align-items: center;
+  margin-top: 38px;
+}
+
+.hero-cta {
+  min-width: 180px;
+  line-height: 64px;
+  background-color: var(--primary-color);
+}
+
+.hero .watch-video {
+  margin-left: 28px;
+  /* Để bỏ viền bao quanh mặc định của thẻ <button> */
+  border: none;
+  /* Để nền trong suốt */
+  background: transparent;
+  /* Để xoay ngang 2 phần tử bên trong và căn giữa 2 phần tử theo chiều dọc */
+  display: flex;
+  align-items: center;
+  /* Khi đưa chuột vào nút, con trỏ sẽ đổi từ mũi tên ➜ thành hình bàn tay 👆. */
+  cursor: pointer;
+}
+
+.hero .watch-video .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+  background: #fff;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.07);
+}
+
+.hero .watch-video span {
+  margin-left: 14px;
+  color: #171100;
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 1.67; /* 166.667% */
+}
+
+.hero .desc-recent {
+  margin-top: 48px;
+}
+
+.hero .stats {
+  margin-top: 8px;
+}
+
+.hero .stats strong {
+  margin-right: 15px;
+  color: #171100;
+  font-family: var(--font-heading);
+  font-size: 4.4rem;
+  font-weight: 700;
+  line-height: 1.23; /* 122.727% */
+}
+
+/* Chọn thẻ <strong> thứ 2 */
+.hero .stats strong:nth-child(2) {
+  margin-left: 28px;
 }
