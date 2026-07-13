@@ -62,6 +62,27 @@ a {
   margin-left: auto;
   margin-right: auto;
 }
+
+/* Dùng để rút gọn nội dung và tạo dấu ... khi nội dung quá 1 dòng(mặc định) */
+.line-clamp {
+  display: -webkit-box; /* Kích hoạt cơ chế box của WebKit để hỗ trợ line-clamp */
+  /* Giới hạn số dòng hiển thị, mặc định là 1 dòng */
+  -webkit-line-clamp: var(--line-clamp, 1);
+  -webkit-box-orient: vertical; /* Sắp xếp nội dung theo chiều dọc (vertical) */
+  overflow: hidden; /* Ẩn phần nội dung vượt quá số dòng cho phép */
+}
+
+/* Dùng để rút gọn nội dung và tạo dấu ... khi nội dung quá 2 dòng */
+.line-clamp.line-2 {
+  /* Giới hạn số dòng hiển thị là 2 dòng */
+  -webkit-line-clamp: 2;
+}
+
+/* Dùng để ép ngắt từ ở bất kỳ ký tự nào khi nội dung quá dài */
+.break-all {
+  word-break: break-all; /* Cho phép trình duyệt ngắt chữ ở mọi vị trí để tránh tràn khung */
+}
+
 /* ==================== header ==================== */
 
 .header {
@@ -376,6 +397,9 @@ a {
 
 /* Trạng thái bình thường của course-item */
 .popular .course-item {
+  /* Để 3 item có cùng trọng số để luôn bằng nhau khi text quá dài */
+  /* flex: flex-grow flex-shrink flex-basis; */
+  flex: 1;
   border-radius: 12px;
   border: 1px solid #e2dfda;
   background: #fff;
