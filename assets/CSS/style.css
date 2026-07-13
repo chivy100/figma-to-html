@@ -27,6 +27,15 @@ a {
   text-decoration: none;
 }
 
+.heading-lv2 {
+  color: #171100;
+  font-family: var(--font-heading);
+  font-size: 3.8rem;
+  font-weight: 700;
+  line-height: 1.27; /* 126.316% */
+  letter-spacing: -0.76px;
+}
+
 .btn {
   /* Chuyển mặc định (inline) sang inline-block để set padding */
   display: inline-block;
@@ -123,7 +132,7 @@ a {
   margin-left: 49px;
 }
 
-/* ==============hero================ */
+/* ==================== hero ==================== */
 
 .hero {
   padding: 56px 0 65px;
@@ -134,7 +143,7 @@ a {
   display: flex;
 }
 
-/* ==========hero left========== */
+/* ========== hero left ========== */
 /* Lấy class hero thay vì class main-content vì main-content là class chung các phần khác nữa. Nên không phân biệt được.  */
 .hero .media-block {
   /* Dùng để căn chỉnh khối .media-summary theo khối cha .media-block */
@@ -212,7 +221,7 @@ a {
   line-height: 1.67; /* 166.667% */
 }
 
-/* ==========hero right========== */
+/* ========== hero right ========== */
 .hero .content-block {
   /* Lấy 100% - 48%(bên khối trái) = 52% */
   width: 52%;
@@ -301,4 +310,57 @@ a {
 /* Chọn thẻ <strong> thứ 2 */
 .hero .stats strong:nth-child(2) {
   margin-left: 28px;
+}
+
+/* ==================== popular ==================== */
+.popular {
+  /* Có padding để phần nền không ôm sát chữ. Sau này muốn đổi nền cũng tiện */
+  padding: 65px 0;
+  /* Thấy ô chữ cách phần hero 200px mà padding đã 65px rồi nên margin-top còn 135px */
+  margin-top: 135px;
+}
+
+.popular-top {
+  /* Để xoay ngang 2 phần tử bên trong và căn 2 phần tử sát lề 2 bên theo chiều ngang */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.popular-top .desc {
+  margin-top: 16px;
+  width: 458px;
+  color: #5f5b53;
+  font-size: 1.8rem;
+  line-height: 1.67; /* 166.667% */
+}
+
+.popular-top .controls {
+  display: flex;
+  /* Khoảng cách giữa các phần tử là 18px */
+  gap: 18px;
+}
+
+.popular-top .control-btn {
+  /* 3 thuộc tính đầu để căn giữa icon trong khung hình tròn */
+  /* Khi dùng display: flex, phần tử chuyển sang dạng block (khối) và không còn tính chất inline(xếp 1 hàng) nữa. Nên muốn xoay ngang 2 phần tử thì lên lớp cha dùng display: flex */
+  display: flex;
+  /* Mẹo: Nếu muốn phần tử vừa xếp hàng ngang như inline ở ngoài, vừa xài được flex ở trong thì dùng: */
+  /* display: inline-flex; */
+  justify-content: center;
+  align-items: center;
+  /* Xóa viền nút button */
+  background: transparent;
+  width: 40px;
+  height: 40px;
+  /* Tạo hình tròn */
+  border-radius: 50%;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+
+.popular-top .control-btn:hover{
+  background-color: var(--primary-color);
+  color: #fff;
+  cursor: pointer;
 }
