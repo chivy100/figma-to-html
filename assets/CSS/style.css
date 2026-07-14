@@ -640,3 +640,132 @@ a {
   width: 470px;
   height: 440px;
 }
+
+/* ==================== blogs ==================== */
+
+.blogs {
+  margin-top: 135px;
+  padding: 96px 0;
+  background-color: #fffcf4;
+}
+
+.blogs .blog-top {
+  /* text-align là thuộc tính có tính kế thừa (inherit).
+   Khi đặt ở thẻ cha, các thẻ con chứa văn bản
+   sẽ tự động nhận giá trị đó nếu không bị ghi đè.
+*/
+  /* h2, p bên trong sẽ tự nhận:
+   text-align: center;
+*/
+  /* Nếu thẻ con có khai báo riêng thì sẽ ưu tiên thẻ con */
+  text-align: center;
+}
+
+.blogs .blog-top .desc {
+  /* Trước đó vì <p> là thẻ block nên dùng text-align sẽ căn giữa box đó. Nhưng khi set chiều rộng nó sẽ căn chính giữa khung đó thôi. Nên cần dùng margin để tự động căn cả box đó vào giữa  */
+  margin: 16px auto 0;
+  width: 448px;
+  color: #696262;
+  font-size: 1.6rem;
+  line-height: 1.75; /* 175% */
+}
+
+.blogs .blog-list {
+  gap: 30px;
+  display: flex;
+  margin-top: 55px;
+}
+
+.blogs .item {
+  /* Để 3 item nhân 3 lên là vừa 100% tổng chiều rộng */
+  width: 33.33%;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.blogs .item:hover {
+  box-shadow: 0px 16px 32px 0px rgba(0, 0, 0, 0.05);
+}
+
+.blogs .item .thumb {
+  /* Để chiều dài từng ảnh bằng item. Rồi set chiều cao sau cho bằng nhau giữa các item */
+  width: 100%;
+  height: 250px;
+  /* object-fit: cover;
+
+   Giữ nguyên tỷ lệ ảnh/video.
+   Phủ kín toàn bộ khung chứa.
+   Phần thừa sẽ bị cắt bớt.
+   Không làm ảnh bị méo.
+
+   Thường dùng khi đã đặt:
+   width + height cố định.
+*/
+  object-fit: cover;
+  border-radius: 16px 16px 0px 0px;
+}
+
+.blogs .item .info {
+  padding: 20px 20px 28px;
+}
+
+.blogs .item .date {
+  /* Vì .date là lớp cha đang tác động display: flex nên làm thanh ngang nó ngang hàng với date. Nên cần dùng position để điều chỉnh xuống dưới date */
+  position: relative;
+  padding-bottom: 12px; /*Để đẩy thanh ngang xuống*/
+  /* .blogs .item .date là lớp cha của .blogs .item .date::before */
+  /* inline-flex giúp:
+     Các phần tử con nằm ngang.
+     align-items: center căn icon và chữ thẳng hàng theo chiều dọc.
+     Khối .date chỉ rộng bằng nội dung (giống inline). */
+  display: inline-flex;
+  align-items: center; /*Căn giữa chấm tròn ở lớp con .blogs .item .date::before*/
+  color: #5f5b53;
+  font-size: 1.4rem;
+  line-height: 1.86; /* 185.714% */
+}
+
+/* Tạo dấu chấm tròn trước date*/
+.blogs .item .date::before {
+  /* .blogs .item .date là lớp cha của .blogs .item .date::before */
+  content: "";
+  margin-right: 4px;
+  /* Thẻ <span> mặc định là inline.
+   Phần tử inline không áp dụng width và height. Nên phải đổi lại là inline-block */
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary-color);
+}
+
+/* Tạo thanh ngang sau date*/
+.blogs .item .date::after {
+  /* Vì .date là lớp cha đang tác động display: flex nên làm thanh ngang nó ngang hàng với date. Nên cần dùng position để điều chỉnh xuống dưới date */
+  position: absolute; /*Căn theo thẻ cha*/
+  left: 0;
+  bottom: 0;
+  /* right: -27px để thanh ngang luôn dài ra phần bên phải theo nội dung .date và luôn hơn 27px phần bên phải */
+  right: -27px;
+  content: "";
+  display: inline-block;
+  height: 1px;
+  border-radius: 0.5px;
+  background: #e2dfda;
+}
+
+.blogs .item .title {
+  margin-top: 12px;
+  color: #171100;
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1.75; /* 175% */
+}
+
+.blogs .item .btn {
+  margin-top: 12px;
+}
+
+.blogs .item .btn:hover {
+  background: var(--primary-color);
+}
