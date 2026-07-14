@@ -487,8 +487,26 @@ a {
   background: #2e2100;
 }
 
+.feedback-list {
+  display: flex;
+  /* Đổi từ overflow: visible; (Mặc định, cho phép tràn ra ngoài) sang
+     overflow: hidden;  (Cắt phần tràn) */
+  overflow: hidden;
+}
+
 .feedback-item {
   display: flex;
+
+  /* Mỗi feedback-item phải rộng bằng 100% khung cha (.feedback-list).
+     Nếu không khai báo width: 100%, trình duyệt sẽ tự tính chiều rộng
+     theo nội dung bên trong. Khi kết hợp với .content { width: 66% }
+     và margin-left: auto, phần nội dung bên phải có thể bị tràn ra ngoài.
+     Do .feedback-list đang overflow: hidden nên phần bị tràn sẽ bị cắt mất,
+     dẫn đến hiện tượng "mất chữ". */
+  width: 100%;
+
+  /* Để không cho các item bị co lại khi dùng display: flex để xếp các item trên 1 hàng ngang, thuộc tính này thuộc lớp con */
+  flex-shrink: 0;
 }
 
 .feedback-item .avatar {
@@ -528,7 +546,7 @@ a {
   cursor: pointer;
 }
 
-.feedback-item .dot.active{
+.feedback-item .dot.active {
   /* dot nào được active(chọn vào rồi) thì không hiện bàn tay khi rê chuột vào nữa */
   cursor: default;
   background: var(--primary-color);
