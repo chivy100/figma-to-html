@@ -68,6 +68,8 @@ a {
   display: -webkit-box; /* Kích hoạt cơ chế box của WebKit để hỗ trợ line-clamp */
   /* Giới hạn số dòng hiển thị, mặc định là 1 dòng */
   -webkit-line-clamp: var(--line-clamp, 1);
+  /* Viết cả tiền tố -webkit- (cho trình duyệt cũ) và thuộc tính tiêu chuẩn (cho tương lai) để đảm bảo tính tương thích */
+  line-clamp: var(--line-clamp, 1);
   -webkit-box-orient: vertical; /* Sắp xếp nội dung theo chiều dọc (vertical) */
   overflow: hidden; /* Ẩn phần nội dung vượt quá số dòng cho phép */
 }
@@ -76,6 +78,8 @@ a {
 .line-clamp.line-2 {
   /* Giới hạn số dòng hiển thị là 2 dòng */
   -webkit-line-clamp: 2;
+  /* Viết cả tiền tố -webkit- (cho trình duyệt cũ) và thuộc tính tiêu chuẩn (cho tương lai) để đảm bảo tính tương thích */
+  line-clamp: 2;
 }
 
 /* Dùng để ép ngắt từ ở bất kỳ ký tự nào khi nội dung quá dài */
@@ -473,4 +477,74 @@ a {
 
 .popular .course-item .btn-book:hover {
   background: var(--primary-color);
+}
+
+/* ==================== feedback ==================== */
+.feedback {
+  /* Do đo được từ feedback lên popular là 200px mà phần padding của popular đã là 65px nên 200px - 65px = 135px */
+  margin-top: 135px;
+  padding: 96px 0;
+  background: #2e2100;
+}
+
+.feedback-item {
+  display: flex;
+}
+
+.feedback-item .avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.feedback-item .info .member-name {
+  margin-top: 18px;
+  color: #f7f7f7;
+  font-family: var(--font-heading);
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.42; /* 141.667% */
+}
+
+.feedback-item .info .desc {
+  margin-top: 4px;
+  color: #bfbcb2;
+  font-size: 1.4rem;
+  line-height: 1.86; /* 185.714% */
+}
+
+.feedback-item .dots {
+  gap: 6px;
+  display: flex;
+  margin-top: 28px;
+}
+
+.feedback-item .dot {
+  height: 6px;
+  width: 6px;
+  border-radius: 50%;
+  background: #634700;
+  cursor: pointer;
+}
+
+.feedback-item .dot.active{
+  /* dot nào được active(chọn vào rồi) thì không hiện bàn tay khi rê chuột vào nữa */
+  cursor: default;
+  background: var(--primary-color);
+}
+
+.feedback-item .content {
+  /* Lấy width của box content chia cho box main-content (chỗ định dạng chung phần box lớn) */
+  /* Width % tính theo độ rộng của lớp cha gần nhất */
+  width: 66%;
+  /* margin-left: auto: Trình duyệt sẽ lấy toàn bộ khoảng trống còn dư bên trái để làm khoảng đệm. Khi khoảng đệm bên trái phình to ra tối đa, nó sẽ tự động đẩy cái hộp sang sát mép bên phải. */
+  margin-left: auto;
+}
+
+.feedback-item blockquote {
+  color: #fff;
+  font-size: 2.6rem;
+  font-style: italic;
+  line-height: 1.54; /* 153.846% */
 }
