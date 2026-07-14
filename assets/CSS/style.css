@@ -339,6 +339,7 @@ a {
 }
 
 /* ==================== popular ==================== */
+
 .popular {
   /* Có padding để phần nền không ôm sát chữ. Sau này muốn đổi nền cũng tiện */
   padding: 65px 0;
@@ -480,6 +481,7 @@ a {
 }
 
 /* ==================== feedback ==================== */
+
 .feedback {
   /* Do đo được từ feedback lên popular là 200px mà phần padding của popular đã là 65px nên 200px - 65px = 135px */
   margin-top: 135px;
@@ -565,4 +567,56 @@ a {
   font-size: 2.6rem;
   font-style: italic;
   line-height: 1.54; /* 153.846% */
+}
+
+/* ==================== features ==================== */
+
+.features {
+  /* margin-top: 135px + padding: 65px = 200px là khoảng cách từ features đến feedback */
+  margin-top: 135px;
+  padding: 65px 0;
+}
+
+.features .body {
+  display: flex;
+  justify-content: space-between;
+}
+
+.features .images {
+  display: flex;
+  gap: 30px;
+}
+
+.features .images img {
+  width: 270px;
+  height: 405px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.features .lower {
+  margin-top: 34px;
+}
+
+.features .content {
+  /* Chia width content cho width main-content */
+  width: 41%;
+  display: flex; /* Biến .content thành Flex Container. Các phần tử nằm cùng 1 hàng ngang */
+  flex-direction: column; /* Xếp các phần tử con theo chiều dọc (trên xuống dưới) */
+  justify-content: center; /* Căn giữa các phần tử con theo trục chính.
+                               Vì đang dùng column nên sẽ căn giữa theo chiều dọc */
+}
+
+.features .desc {
+  margin-top: 16px;
+  color: #5f5b53;
+  font-size: 1.6rem;
+  line-height: 1.75; /* 175% */
+}
+
+.features .cta-btn {
+  margin-top: 32px;
+  width: 137px;
+  height: 50px;
+  background: var(--primary-color);
 }
