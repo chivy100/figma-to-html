@@ -671,6 +671,8 @@ a {
 }
 
 .blogs .blog-list {
+  /* Để ẩn các item bị tràn đi */
+  overflow: hidden;
   gap: 30px;
   display: flex;
   margin-top: 55px;
@@ -678,7 +680,10 @@ a {
 
 .blogs .item {
   /* Để 3 item nhân 3 lên là vừa 100% tổng chiều rộng */
-  width: 33.33%;
+  /* Nhưng vì dùng flex-shrink: 0 là không co lại mà gap ở lớp cha là 30px ở 2 khoảng giữa là 60px tổng cộng chia 3 là mỗi item hụt 20px */
+  width: calc(33.33% - 20px);
+  /* Để khi nhiều hơn 3 item, các item không bị co lại */
+  flex-shrink: 0;
   border-radius: 16px;
   background: #fff;
 }
@@ -764,8 +769,29 @@ a {
 
 .blogs .item .btn {
   margin-top: 12px;
+  font-size: 1.4rem;
 }
 
 .blogs .item .btn:hover {
   background: var(--primary-color);
+}
+
+.blogs .dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 38px;
+}
+
+.blogs .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #5f5b53;
+  cursor: pointer;
+}
+
+.blogs .dot.active {
+  background: var(--primary-color);
+  cursor: default;
 }
