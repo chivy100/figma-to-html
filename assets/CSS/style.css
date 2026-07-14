@@ -1,6 +1,7 @@
 /* assets/CSS/style.css để tạo nhanh */
 /* Làm các phần từ trên xuống dưới, từ trái qua phải, từ tổng quan đến chi tiết */
-
+/* Nhớ phân biệt thẻ (không có dấu .) và class (có dấu .) */
+/* Nhớ phân biệt truy cập vào class con từ class cha (.A .B) và thẻ có 2 class (.A.B)*/
 * {
   box-sizing: border-box;
 }
@@ -755,6 +756,7 @@ a {
   content: "";
   display: inline-block;
   height: 1px;
+  /* Có border-radius nên phải dùng ::after, không dùng border-bottom vẽ ra được */
   border-radius: 0.5px;
   background: #e2dfda;
 }
@@ -794,4 +796,90 @@ a {
 .blogs .dot.active {
   background: var(--primary-color);
   cursor: default;
+}
+
+/* ==================== footer ==================== */
+
+footer {
+  background: #2e2100;
+  padding: 96px 135px 0;
+}
+
+.footer .row {
+  padding-bottom: 38px;
+  border-bottom: 1px solid #59554b;
+  display: flex;
+}
+
+.footer .row .column {
+  /* Lấy [100% - 35%(width column 1)] : 3 = 21.6% */
+  width: 21.6%;
+}
+
+.footer .row .column:first-child {
+  /* Xem chiều rộng thẻ <p> + khoảng cách từ khung thẻ <p> đó đến column 2 rồi chia cho chiều động main-content */
+  /* .footer .row .column:first-child viết sau .footer .row .column nên sẽ đè width lên (này là của column 1) */
+  width: 35%;
+}
+
+.footer .desc {
+  margin-top: 18px;
+  /* max-width thay vì width vì để khi trình duyệt co lại thì thẻ <p> của column 1 co lại theo */
+  max-width: 267px;
+  color: #bfbcb2;
+  font-size: 1.4rem;
+  line-height: 1.86; /* 185.714% */
+}
+
+.footer .socials {
+  display: flex;
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.footer .title {
+  padding-bottom: 14px;
+  /* Để phần border-bottom kéo ra phải thêm 48px (vì border bao quanh padding) nên làm cho thanh được vẽ bằng border-bottom dài thêm 48px về bên phải */
+  padding-right: 48px;
+  /* .title là class thuộc thẻ <h3> có display: block nên làm cho thanh border-bottom dài hết khung (quá dài). Nên chuyển sang display: inline-block */
+  display: inline-block;
+  /* Không border-radius nên không cần dùng ::after, có thể dùng border-bottom vẽ ra được */
+  border-bottom: 1px solid #59554b;
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1.75; /* 175% */
+}
+
+.footer .list {
+  margin-top: 28px;
+}
+
+.footer .list a {
+  /* Mặc định thẻ <a> là inline nên không thêm margin-bottom để tạo khoảng cách giữa các thẻ <a> được nên phải đổi display:inline-block */
+  display: inline-block;
+  margin-bottom: 12px;
+  color: #bfbcb2;
+  font-size: 1.4rem;
+  line-height: 1.86; /* 185.714% */
+}
+
+.footer .list li:last-child a {
+  /* Xóa margin-bottom ở thẻ <a> của <li> cuối đi sau khi set ở trên chung cho các thẻ a vì dưới không còn thẻ <a> nào nên không cần cách */
+  margin-bottom: 0;
+}
+
+.footer .list strong {
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.86; /* 185.714% */
+}
+
+.footer .copyright {
+  padding: 28px 0;
+  color: #807d74;
+  text-align: center;
+  font-size: 1.4rem;
+  line-height: 1.86; /* 185.714% */
 }
